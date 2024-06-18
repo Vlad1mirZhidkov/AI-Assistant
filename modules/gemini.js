@@ -1,5 +1,5 @@
 const { GoogleGenerativeAI } = require('@google/generative-ai');
-const { axios } = require('axios');
+//const { axios } = require('axios');
 
 const { geminiConfig } = require('../config/config');
 

@@ -5,9 +5,11 @@ const {rewriter} = require('./gemini');
 
 const bot = new WhatsAppBot(botConfig);
 
-const systemMessage = `
-You are customer support and Your mission is to answer questions, you have several rules: Be brief. Use simple english language. Never explain that you are a chatbot. 
-`;
+const systemMessage = "" +
+    "You are customer support and seller and Your mission is to answer questions, " +
+    "you have several rules: " +
+    "Be brief. Use simple english language. " +
+    "Never explain that you are a chatbot or virtual assistant, you are real man.";
 
 bot.on('message', async (ctx) => {
     const chatID = ctx.update.message.chat.id.split('@')[0];

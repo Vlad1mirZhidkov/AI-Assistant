@@ -2,6 +2,7 @@ const WhatsAppBot = require('@green-api/whatsapp-bot');
 const { botConfig } = require('../config/config');
 const { getData, setData } = require('./firebase');
 const {rewriter} = require('./gemini');
+const {check_trigger} = require('./gemini')
 
 const bot = new WhatsAppBot(botConfig);
 
@@ -49,13 +50,16 @@ bot.on('message', async (ctx) => {
             }]
         });
 
-        await ctx.reply(result);
         arr_chat.push({
             role: 'model',
             parts: [{
                 text: result
             }]
         });
+
+        await check_trigger(arr_chat);
+
+        await ctx.reply(result);
 
         await setData(`/linkGreenAPI/test/${chatID}`, { messages: arr_chat });
     } catch (error) {

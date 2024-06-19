@@ -57,9 +57,14 @@ bot.on('message', async (ctx) => {
             }]
         });
 
-        await check_trigger(arr_chat);
+        const { flag_sell, flag_stop } = await check_trigger(arr_chat);
 
-        await ctx.reply(result);
+        if (!flag_sell && !flag_stop) {
+            await ctx.reply(result);
+        }
+        else {
+            await ctx.reply("Okey, we will communicate with you soon!")
+        }
 
         await setData(`/linkGreenAPI/test/${chatID}`, { messages: arr_chat });
     } catch (error) {

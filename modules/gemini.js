@@ -23,7 +23,7 @@ const check_trigger = async (chat_history) => {
     });
 
     const request = `
-        You must to classify lst message based on context in chat history.
+        You must to classify last message based on context in chat history.
         You must to use only one word to respond. 
         React with 'SELL' if buyer intends to purchase the item and decided on a purchase. 
         'STOP' should be your answer if the consumer shows symptoms of rage,

@@ -43,7 +43,13 @@ bot.on('message', async (ctx) => {
             call_real_human: false,
         };
 
-        await setData(`/linkGreenAPI/test/${chatID}`, { data });
+        await setData(`/linkGreenAPI/test/${chatID}`, { messages: arr_chat.messages,
+            buy: arr_chat.buy,
+            call_real_human: arr_chat.call_real_human });
+
+        if (arr_chat.buy || arr_chat.call_real_human) {
+            return;
+        }
 
         const result = await rewriter(message, arr_chat.messages);
         console.log('Rewritten Result:', result);
@@ -65,9 +71,17 @@ bot.on('message', async (ctx) => {
         const { flag_sell, flag_stop } = await check_trigger(arr_chat.messages);
 
         if (!flag_sell && !flag_stop) {
+
             await ctx.reply(result);
         }
         else {
+            arr_chat.messages.pop()
+            arr_chat.messages.push({
+                role: 'model',
+                parts: [{
+                    text: "Okay, we will communicate with you soon!"
+                }]
+            });
 
             await ctx.reply("Okay, we will communicate with you soon!")
         }

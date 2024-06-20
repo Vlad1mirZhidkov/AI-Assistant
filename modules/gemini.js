@@ -54,7 +54,6 @@ const rewriter = async (context_text, arrChat) => {
             }
         });
 
-
         const response = await chat.sendMessage(context_text);
         return response.response.candidates[0].content.parts[0].text.trim();
 

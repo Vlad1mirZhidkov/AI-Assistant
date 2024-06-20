@@ -19,16 +19,16 @@ module.exports = {
 
     geminiConfig: {
         apiKey: process.env.API_KEY_GEMINI,
-        model: "gemini-1.5-flash"
+        model: process.env.GEMINI_MODEL,
     },
 
     gcloudConfig: {
-        client_id:"1076250762043-6jl15qdj5lpjce0fgfkk7fra3jm8a61o.apps.googleusercontent.com",
-        project_id:"whatsapp-426813",
-        auth_uri:"https://accounts.google.com/o/oauth2/auth",
-        token_uri:"https://oauth2.googleapis.com/token",
-        auth_provider_x509_cert_url:"https://www.googleapis.com/oauth2/v1/certs",
-        client_secret:"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",
-        redirect_uris:["http://localhost"]
+        client_id: process.env.GCLOUD_CLIENT_ID,
+        project_id: process.env.GCLOUD_PROJECT_ID,
+        auth_uri: process.env.GCLOUD_AUTH_URI,
+        token_uri: process.env.GCLOUD_TOKEN_URI,
+        auth_provider_x509_cert_url: process.env.GCLOUD_AUTH_PROVIDER_CERT_URL,
+        client_secret: process.env.GCLOUD_CLIENT_SECRET,
+        redirect_uris: process.env.REDIRECT_URIS
     }
 };

@@ -6,23 +6,21 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const dbRef = ref(database);
 
-const getData = async (path) => {
-    try {
-        const snapshot = await get(child(dbRef, path));
-        return snapshot.exists() ? snapshot.val() : null;
-    } catch (error) {
-        console.error("Error fetching data:", error);
-        throw error;
-    }
+const getData =  (path) => {
+        const snapshot = get(child(dbRef, path)).then(snap=>{
+            return snapshot.exists() ? snapshot.val() : null;
+        }).catch(e=>{
+            console.error("Error fetching data:", e);
+            throw e;
+        });
+        return snapshot
 };
 
-const setData = async (path, data) => {
-    try {
-        await set(ref(database, path), data);
-    } catch (error) {
-        console.error("Error setting data:", error);
-        throw error;
-    }
+const setData =  (path, data) => {
+    set(ref(database, path), data).then().catch(e=>{
+        console.error("Error setting data:", e);
+        throw e;
+    });
 };
 
 module.exports = {

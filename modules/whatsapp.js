@@ -6,6 +6,8 @@ const {check_trigger} = require('./gemini')
 
 const bot = new WhatsAppBot(botConfig);
 
+
+
 const systemMessage = "" +
     "You are customer support and seller and Your mission is to answer questions, " +
     "you have several rules: " +

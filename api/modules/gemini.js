@@ -56,7 +56,7 @@ const check_trigger = async (chat_history) => {
         });
 
         const request = `
-            You must to classify last message based on context in chat history.
+            You must to classify last message based on context in chat history from role 'user'.
             You must to use only JSON response without other words from you!
             In the JSON response, you must provide the idea that the buyer intends in his message.
             You must to use sample JSON response that below:
@@ -71,8 +71,8 @@ const check_trigger = async (chat_history) => {
 
         const check_idea_req = `
             If in the field "idea" in the JSON response: ${response.response.candidates[0].content.parts[0].text} 
-            has a meaning similar to at least one of the following words: ${await getData(`/linkGreenAPI/test/botConfig/custom_triggers`)}
-            Then write only one word TRUE, otherwise FALSE (write it not in JSON)!
+            has a meaning similar to at least one of the following words: ${await getData(`/linkGreenAPI/test/botConfig/triggers`)}
+            Then write only one word TRUE if similar meanings, otherwise FALSE (write it not in JSON)!
             `
 
         const check_idea_response = await chat.sendMessage(check_idea_req);

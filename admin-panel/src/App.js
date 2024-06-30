@@ -4,13 +4,13 @@ import Footer from './Footer';
 import Form from './Form';
 import './App.css';
 
-const App = () => (
+const App = () =>  (
     <div className="App">
-      <Header />
-      <main className="main-content">
-        <Form />
-      </main>
-      <Footer />
+        <Header/>
+        <main className="main-content">
+            <Form/>
+        </main>
+        <Footer/>
     </div>
 );
 

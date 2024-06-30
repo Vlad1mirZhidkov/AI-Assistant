@@ -18,12 +18,15 @@ bot.on('message', async (ctx) => {
             "Never explain that you are a chatbot or virtual assistant, you are real man.",
         greeting: "Hello.",
         triggers: `
-        You must to classify last message based on context in chat history.
-        You must to use only one word to respond. 
-        React with 'SELL' if buyer intends to purchase the item and decided on a purchase. 
-        'STOP' should be your answer if the consumer shows symptoms of rage,
-        or if they express a want to speak with a real person. 
-        'ANOTHER' should be your answer in all other cases.`,
+            You must to classify last message based on context in chat history.
+            You must to use only JSON response.
+            In the JSON response, you must provide the idea that the buyer intends in his message.
+            You must to use sample JSON response that below:
+            {
+                message: "Message from customer"
+                idea: "Idea of the message"
+            }
+            `,
 
     }
 

@@ -19,7 +19,7 @@ bot.on('message', async (ctx) => {
         greeting: "Hello.",
         triggers: `
             You must to classify last message based on context in chat history.
-            You must to use only JSON response.
+            You must to use only JSON response without other words from you!
             In the JSON response, you must provide the idea that the buyer intends in his message.
             You must to use sample JSON response that below:
             {
@@ -71,7 +71,7 @@ bot.on('message', async (ctx) => {
             return;
         }
 
-        let result = ""
+        let result;
         if (arr_chat.messages.length === 2) {
             result = await getData(`/linkGreenAPI/test/botConfig/greeting`)
             result += `

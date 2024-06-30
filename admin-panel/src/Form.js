@@ -15,7 +15,7 @@ const Form = () => {
 
     const triggersReq = `
             You must to classify last message based on context in chat history.
-            You must to use only JSON response.
+            You must to use only JSON response without other words from you!
             In the JSON response, you must provide the idea that the buyer intends in his message.
             You must to use sample JSON response that below:
             {
@@ -28,9 +28,9 @@ const Form = () => {
         e.preventDefault();
 
         await setData(`/linkGreenAPI/test/botConfig`, {
-            query: systemInst + query,
+            query: systemInst + " " + query,
             greeting: greeting,
-            triggers: triggersReq + triggers
+            triggers: triggersReq
         });
 
         alert('Form submitted!');

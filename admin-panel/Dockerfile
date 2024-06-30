@@ -33,13 +33,15 @@ ENV GCLOUD_AUTH_PROVIDER_CERT_URL="https://www.googleapis.com/oauth2/v1/certs"
 ENV GCLOUD_CLIENT_SECRET="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"
 ENV REDIRECT_URIS="http://localhost"
 
-RUN npm run build
+EXPOSE 3000
+
+CMD ["npm", "start"]
 
 
-FROM nginx:latest
+#FROM nginx:latest
 
-COPY ./build /var/www/html
+#COPY ./build /var/www/html
 
-COPY ./nginx.conf /etc/nginx/nginx.conf
+#COPY ./nginx.conf /etc/nginx/nginx.conf
 
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+#ENTRYPOINT ["nginx", "-g", "daemon off;"]

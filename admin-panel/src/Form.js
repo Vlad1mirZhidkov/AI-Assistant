@@ -30,8 +30,7 @@ const Form = () => {
         await setData(`/linkGreenAPI/test/botConfig`, {
             query: systemInst + " " + query,
             greeting: greeting,
-            triggers: triggersReq,
-            custom_triggers: triggers
+            triggers: triggersReq
         });
 
         alert('Form submitted!');

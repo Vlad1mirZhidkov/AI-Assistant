@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node config/index.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
     "axios": "^1.7.2",
     "dotenv": "^16.4.5",
     "firebase": "^10.12.2",
-    "google-auth-library": "^9.11.0"
+    "google-auth-library": "^9.11.0",
+    "node-fetch": "^3.3.2"
   }
 }

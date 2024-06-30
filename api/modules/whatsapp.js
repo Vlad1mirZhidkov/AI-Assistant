@@ -6,13 +6,36 @@ const {check_trigger} = require('./gemini')
 
 const bot = new WhatsAppBot(botConfig);
 
-const systemMessage = "" +
-    "You are customer support and seller and Your mission is to answer questions, " +
-    "you have several rules: " +
-    "Be brief. Use simple english language. " +
-    "Never explain that you are a chatbot or virtual assistant, you are real man.";
-
 bot.on('message', async (ctx) => {
+
+    let conf = await getData(`/linkGreenAPI/test/botConfig`);
+
+    let botConf = conf ? conf : {
+        query: "" +
+            "You are customer support and seller and Your mission is to answer questions, " +
+            "you have several rules: " +
+            "Be brief. Use simple english language. " +
+            "Never explain that you are a chatbot or virtual assistant, you are real man.",
+        greeting: "Hello.",
+        triggers: `
+        You must to classify last message based on context in chat history.
+        You must to use only one word to respond. 
+        React with 'SELL' if buyer intends to purchase the item and decided on a purchase. 
+        'STOP' should be your answer if the consumer shows symptoms of rage,
+        or if they express a want to speak with a real person. 
+        'ANOTHER' should be your answer in all other cases.`,
+
+    }
+
+    await setData(`/linkGreenAPI/test/botConfig`, {
+        query: botConf.query,
+        greeting: botConf.greeting,
+        triggers: botConf.triggers,
+    });
+
+    const systemMessage = botConf.query;
+
+
     const chatID = ctx.update.message.chat.id.split('@')[0];
     const message = ctx.update.message.text;
     console.log(chatID, message);
@@ -50,8 +73,13 @@ bot.on('message', async (ctx) => {
         if (arr_chat.buy || arr_chat.call_real_human) {
             return;
         }
+        let result = ""
+        if (arr_chat.messages.length === 2) {
+            result = await getData(`/linkGreenAPI/test/botConfig/greeting`)
+        } else {
+            result = await rewriter(message, arr_chat.messages);
+        }
 
-        const result = await rewriter(message, arr_chat.messages);
         console.log('Rewritten Result:', result);
 
         arr_chat.messages.push({

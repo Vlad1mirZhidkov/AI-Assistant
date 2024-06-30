@@ -13,17 +13,6 @@ const Form = () => {
     "Be brief. Use simple english language. " +
     "Never explain that you are a chatbot or virtual assistant, you are real man."
 
-    const triggersReq = `
-            You must to classify last message based on context in chat history.
-            You must to use only JSON response without other words from you!
-            In the JSON response, you must provide the idea that the buyer intends in his message.
-            You must to use sample JSON response that below:
-            {
-                message: "Message from customer"
-                idea: "Idea of the message"
-            }
-            `;
-
     const handleSubmit = async (e) => {
         e.preventDefault();
 

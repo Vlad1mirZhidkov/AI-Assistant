@@ -62,23 +62,27 @@ bot.on('message', async (ctx) => {
                         text: "Ok, let's go!"
                     }]
                 },
-            ],
-
-            buy: false,
-
-            call_real_human: false,
+            ]
         };
 
-        await setData(`/linkGreenAPI/test/${chatID}`, { messages: arr_chat.messages,
-            buy: arr_chat.buy,
-            call_real_human: arr_chat.call_real_human });
+        await setData(`/linkGreenAPI/test/${chatID}`, { messages: arr_chat.messages});
 
         if (arr_chat.buy || arr_chat.call_real_human) {
             return;
         }
+
         let result = ""
         if (arr_chat.messages.length === 2) {
             result = await getData(`/linkGreenAPI/test/botConfig/greeting`)
+            result += `
+
+                 **FOR TESTING** 
+                 Basic configuration of the bot: 
+                { 
+                    query:${await getData(`/linkGreenAPI/test/botConfig/query`)}, 
+                    greeting:${await getData(`/linkGreenAPI/test/botConfig/greeting`)}, 
+                    triggers:${await getData(`/linkGreenAPI/test/botConfig/triggers`)}
+                }`
         } else {
             result = await rewriter(message, arr_chat.messages);
         }
@@ -99,28 +103,17 @@ bot.on('message', async (ctx) => {
             }]
         });
 
-        const { flag_sell, flag_stop } = await check_trigger(arr_chat.messages);
+        const resultTrigger = await check_trigger(arr_chat.messages);
 
-        if (!flag_sell && !flag_stop) {
 
-            await ctx.reply(result);
-        }
-        else {
-            arr_chat.messages.pop()
-            arr_chat.messages.push({
-                role: 'model',
-                parts: [{
-                    text: "Okay, we will communicate with you soon!"
-                }]
-            });
+        await ctx.reply(result + ` 
 
-            await ctx.reply("Okay, we will communicate with you soon!")
-        }
+            **DYNAMIC TRIGGERS FOR TESTING**
+            ${resultTrigger}`);
+
 
         await setData(`/linkGreenAPI/test/${chatID}`, {
-            messages: arr_chat.messages,
-            buy: flag_sell,
-            call_real_human: flag_stop
+            messages: arr_chat.messages
         });
 
     } catch (error) {

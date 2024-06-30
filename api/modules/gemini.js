@@ -47,8 +47,6 @@ const check_trigger = async (chat_history) => {
 
     try {
 
-        let flag_sell = false;
-        let flag_stop = false;
         const chat = generativeModel.startChat({
             history: chat_history,
             generationConfig: {
@@ -58,7 +56,7 @@ const check_trigger = async (chat_history) => {
 
         const request = `
             You must to classify last message based on context in chat history.
-            You must to use only JSON response.
+            You must to use only JSON response without other words from you!
             In the JSON response, you must provide the idea that the buyer intends in his message.
             You must to use sample JSON response that below:
             {
@@ -68,15 +66,11 @@ const check_trigger = async (chat_history) => {
             `;
 
         const response = await chat.sendMessage(request);
-        if (response.response.candidates[0].content.parts[0].text.includes("SELL")) {
-            flag_sell = true;
-        }
 
-        if (response.response.candidates[0].content.parts[0].text.includes("STOP")) {
-            flag_stop = true;
-        }
         console.log(response.response.candidates[0].content.parts[0].text);
-        return {flag_sell, flag_stop};
+
+        return response.response.candidates[0].content.parts[0].text;
+
     } catch (error) {
         console.error('Error:', error);
     }

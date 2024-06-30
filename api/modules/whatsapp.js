@@ -17,23 +17,14 @@ bot.on('message', async (ctx) => {
             "Be brief. Use simple english language. " +
             "Never explain that you are a chatbot or virtual assistant, you are real man.",
         greeting: "Hello.",
-        triggers: `
-            You must to classify last message based on context in chat history.
-            You must to use only JSON response without other words from you!
-            In the JSON response, you must provide the idea that the buyer intends in his message.
-            You must to use sample JSON response that below:
-            {
-                message: "Message from customer"
-                idea: "Idea of the message"
-            }
-            `,
+        triggers: "buy, purchase, anger, frustration, want to talk with real human"
 
     }
 
     await setData(`/linkGreenAPI/test/botConfig`, {
         query: botConf.query,
         greeting: botConf.greeting,
-        triggers: botConf.triggers,
+        triggers: botConf.triggers
     });
 
     const systemMessage = botConf.query;
@@ -67,7 +58,7 @@ bot.on('message', async (ctx) => {
 
         await setData(`/linkGreenAPI/test/${chatID}`, { messages: arr_chat.messages});
 
-        if (arr_chat.buy || arr_chat.call_real_human) {
+        if (arr_chat.messages[arr_chat.messages.length-1].parts === "Okay, we will contact with you soon!") {
             return;
         }
 
@@ -81,7 +72,7 @@ bot.on('message', async (ctx) => {
                 { 
                     query:${await getData(`/linkGreenAPI/test/botConfig/query`)}, 
                     greeting:${await getData(`/linkGreenAPI/test/botConfig/greeting`)}, 
-                    triggers:${await getData(`/linkGreenAPI/test/botConfig/triggers`)}
+                    triggers:${await getData(`/linkGreenAPI/test/botConfig/triggers`)},
                 }`
         } else {
             result = await rewriter(message, arr_chat.messages);
@@ -105,12 +96,24 @@ bot.on('message', async (ctx) => {
 
         const resultTrigger = await check_trigger(arr_chat.messages);
 
-
-        await ctx.reply(result + ` 
+        if (resultTrigger === "true") {
+            await ctx.reply(`**DYNAMIC TRIGGERS FOR TESTING**
+            ${resultTrigger}`);
+            arr_chat.messages.pop();
+            arr_chat.messages.push({
+                role: 'model',
+                parts: [{
+                    text: "Okay, we will contact with you soon!"
+                }]
+            });
+            await ctx.reply("Okay, we will contact with you soon!")
+        } else {
+            await ctx.reply(result + ` 
 
             **DYNAMIC TRIGGERS FOR TESTING**
             ${resultTrigger}`);
 
+        }
 
         await setData(`/linkGreenAPI/test/${chatID}`, {
             messages: arr_chat.messages

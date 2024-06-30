@@ -1,5 +1,6 @@
 const { VertexAI } = require('@google-cloud/vertexai');
 const { GoogleAuth } = require('google-auth-library');
+const {getData} = require("./firebase");
 
 let authClient = null;
 
@@ -64,10 +65,23 @@ const check_trigger = async (chat_history) => {
                 idea: "Idea of the message"
             }
             `;
-
         const response = await chat.sendMessage(request);
 
         console.log(response.response.candidates[0].content.parts[0].text);
+
+        const check_idea_req = `
+            If in the field "idea" in the JSON response: ${response.response.candidates[0].content.parts[0].text} 
+            has a meaning similar to at least one of the following words: ${await getData(`/linkGreenAPI/test/botConfig/custom_triggers`)}
+            Then write only one word TRUE, otherwise FALSE (write it not in JSON)!
+            `
+
+        const check_idea_response = await chat.sendMessage(check_idea_req);
+
+        console.log(check_idea_response.response.candidates[0].content.parts[0].text);
+
+        if (check_idea_response.response.candidates[0].content.parts[0].text.toLowerCase().includes('true')) {
+            return 'true';
+        }
 
         return response.response.candidates[0].content.parts[0].text;
 

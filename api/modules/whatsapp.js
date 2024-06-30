@@ -16,7 +16,7 @@ bot.on('message', async (ctx) => {
             "you have several rules: " +
             "Be brief. Use simple english language. " +
             "Never explain that you are a chatbot or virtual assistant, you are real man.",
-        greeting: "Hello.",
+        greeting: "Hello there!",
         triggers: "buy, purchase, anger, frustration, want to talk with real human"
 
     }

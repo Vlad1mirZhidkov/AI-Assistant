@@ -112,5 +112,7 @@ const rewriter = async (context_text, arrChat) => {
 
 module.exports = {
     rewriter,
+    initializeVertexAI,
+    initializeAuth,
     check_trigger
 };

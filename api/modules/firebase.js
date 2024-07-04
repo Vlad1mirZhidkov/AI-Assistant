@@ -28,5 +28,5 @@ const setData = async (path, data) => {
 
 module.exports = {
     getData,
-    setData
+    setData,
 };

@@ -1,11 +1,12 @@
 // Tests of the work of the database module
-const { getData } = require('./modules/firebase');
+const { getData, setData } = require('./modules/firebase');
 const { initializeApp } = require('firebase/app');
-const { getDatabase, ref, get, child } = require('firebase/database');
+const { getDatabase, ref, get, set, child } = require('firebase/database');
 const { firebaseConfig } = require('./config/config');
 
 jest.mock('firebase/app');
 jest.mock('firebase/database');
+
 
 describe('Firebase module', () => {
     beforeEach(() => {
@@ -27,6 +28,21 @@ describe('Firebase module', () => {
 
         expect(get).toHaveBeenCalledWith(child(dbRef, 'test/path'));
         expect(result).toBe('test data');
+    });
+
+    test('setData function', async () => {
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+        const dbRef = ref(database);
+
+        set.mockImplementation(() => Promise.resolve());
+
+        const path = 'test/path';
+        const data = { key: 'value' };
+
+        await setData(path, data);
+
+        expect(set).toHaveBeenCalledWith(ref(database, path), data);
     });
 });
 

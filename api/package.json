@@ -22,5 +22,14 @@
     "firebase": "^10.12.2",
     "google-auth-library": "^9.11.0",
     "node-fetch": "^3.3.2"
+  },
+  "jest": {
+    "reporters": [
+      "default",
+      ["jest-junit", {
+        "outputDirectory": "test-results/junit",
+        "outputName": "results.xml"
+      }]
+    ]
   }
 }

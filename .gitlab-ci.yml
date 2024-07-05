@@ -11,17 +11,17 @@ image: node:latest
 
 cache:
   paths:
-    - admin-panel/node_modules/
+    - /node_modules/
 
 before_script:
-  - cd admin-panel
+  - cd api
   - npm cache clean --force
   - npm install
 
 lint:
   stage: lint
   script:
-    - cd admin-panel
+    - cd api
     - npm run lint
   allow_failure: true
   artifacts:
@@ -33,7 +33,7 @@ lint:
 build:
   stage: build
   script:
-    - cd admin-panel
+    - cd api
     - npm run build
   artifacts:
     paths:

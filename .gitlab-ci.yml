@@ -1,11 +1,44 @@
-image: node:latest
-
 stages:
+  - lint
+  - build
   - test
+
+variables:
+  NODE_ENV: 'test'
+  CI: 'true'
+
+image: node:latest
 
 cache:
   paths:
-    - node_modules/
+    - admin-panel/node_modules/
+
+before_script:
+  - cd admin-panel
+  - npm cache clean --force
+  - npm install
+
+lint:
+  stage: lint
+  script:
+    - cd admin-panel
+    - npm run lint
+  allow_failure: true
+  artifacts:
+    reports:
+      junit: admin-panel/reports/lint-report.xml
+    paths:
+      - admin-panel/reports/
+
+build:
+  stage: build
+  script:
+    - cd admin-panel
+    - npm run build
+  artifacts:
+    paths:
+      - admin-panel/build
+
 
 install_dependencies:
   stage: .pre

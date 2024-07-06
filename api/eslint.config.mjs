@@ -9,8 +9,11 @@ const config = [
             },
         },
         plugins: {
-            '@eslint/js': pluginJs,
-        },
+          '@eslint/js': pluginJs,
+          'eslint-plugin-junit': {
+              outputFile: 'reports/lint-report.xml',
+          },
+      },
         rules: {
         },
     },

@@ -1,7 +1,7 @@
 stages:
-  - lint
-  - build
   - test
+  - build
+  - lint
 
 variables:
   NODE_ENV: 'test'

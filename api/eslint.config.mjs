@@ -1,6 +1,5 @@
 // eslint.config.mjs
-import pluginJs from '@eslint/js';
-import globals from 'globals';
+import pluginJs from '@eslint/js'; // recommended linting rools for JS
 
 const config = [
     {

@@ -7,7 +7,7 @@ variables:
   NODE_ENV: 'test'
   CI: 'true'
 
-image: node:latest
+image: node:14
 
 cache:
   paths:

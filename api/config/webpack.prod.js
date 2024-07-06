@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
@@ -19,6 +20,7 @@ module.exports = {
       "stream": require.resolve("stream-browserify"),
       "url": require.resolve("url/"),
       "querystring": require.resolve("querystring-es3"),
+      "process": require.resolve("process/browser"),
       "buffer": require.resolve("buffer/"),
       "util": require.resolve("util/"),
       "path": require.resolve("path-browserify"),
@@ -26,5 +28,10 @@ module.exports = {
       "vm": require.resolve("vm-browserify"),
       "child_process": false
     }
-  }
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
+    }),
+  ],
 };

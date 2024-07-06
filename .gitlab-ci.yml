@@ -18,6 +18,17 @@ before_script:
   - npm cache clean --force
   - npm install
 
+test:
+  stage: test
+  script:
+    - npm run test -- --coverage --watchAll=false
+  artifacts:
+    reports:
+      junit: reports/test-report.xml
+    paths:
+      - coverage
+  coverage: '/All files[^|]*\|[^|]*\|[^|]*\|[^|]*\|([^|]*)%/'
+
 lint:
   stage: lint
   script:
@@ -41,15 +52,4 @@ install_dependencies:
   stage: .pre
   script:
     - npm ci
-
-test:
-  stage: test
-  script:
-    - npm run test -- --coverage --watchAll=false
-  artifacts:
-    reports:
-      junit: reports/test-report.xml
-    paths:
-      - coverage
-  coverage: '/All files[^|]*\|[^|]*\|[^|]*\|[^|]*\|([^|]*)%/'
 

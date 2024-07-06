@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="5" failures="0" errors="0" time="1.789">
-  <testsuite name="Firebase module" errors="0" failures="0" skipped="0" timestamp="2024-07-05T16:32:26" time="1.716" tests="5">
-    <testcase classname="Firebase module getData function" name="Firebase module getData function" time="0.004">
+<testsuites name="jest tests" tests="5" failures="0" errors="0" time="1.132">
+  <testsuite name="Firebase module" errors="0" failures="0" skipped="0" timestamp="2024-07-06T15:46:55" time="1.036" tests="5">
+    <testcase classname="Firebase module getData function" name="Firebase module getData function" time="0.005">
     </testcase>
-    <testcase classname="Firebase module setData function" name="Firebase module setData function" time="0">
+    <testcase classname="Firebase module setData function" name="Firebase module setData function" time="0.001">
     </testcase>
-    <testcase classname="Gemini module initializeAuth function" name="Gemini module initializeAuth function" time="0.017">
+    <testcase classname="Gemini module initializeAuth function" name="Gemini module initializeAuth function" time="0.027">
     </testcase>
-    <testcase classname="Gemini module initializeVertexAI function" name="Gemini module initializeVertexAI function" time="0.022">
+    <testcase classname="Gemini module initializeVertexAI function" name="Gemini module initializeVertexAI function" time="0.02">
     </testcase>
-    <testcase classname="Gemini module rewriter function" name="Gemini module rewriter function" time="0.032">
+    <testcase classname="Gemini module rewriter function" name="Gemini module rewriter function" time="0.025">
     </testcase>
   </testsuite>
 </testsuites>

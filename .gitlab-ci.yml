@@ -11,7 +11,7 @@ image: node:latest
 
 cache:
   paths:
-    - /node_modules/
+    - node_modules/
 
 before_script:
   - cd api
@@ -21,24 +21,21 @@ before_script:
 lint:
   stage: lint
   script:
-    - cd api
     - npm run lint
   allow_failure: true
   artifacts:
     reports:
-      junit: admin-panel/reports/lint-report.xml
+      junit: reports/lint-report.xml
     paths:
-      - admin-panel/reports/
+      - reports/
 
 build:
   stage: build
   script:
-    - cd api
     - npm run build
   artifacts:
     paths:
-      - admin-panel/build
-
+      - build
 
 install_dependencies:
   stage: .pre
@@ -48,9 +45,11 @@ install_dependencies:
 test:
   stage: test
   script:
-    - cd api
     - npm run test -- --coverage --watchAll=false
   artifacts:
     reports:
-      junit: api/reports/test-report.xml
-      cobertura: api/coverage/cobertura-coverage.xml
+      junit: reports/test-report.xml
+    paths:
+      - coverage
+  coverage: '/All files[^|]*\|[^|]*\|[^|]*\|[^|]*\|([^|]*)%/'
+

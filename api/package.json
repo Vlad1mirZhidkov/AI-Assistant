@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node config/index.js"
+    "test": "jest",
+    "start": "node config/index.js",
+    "lint": "eslint . --format junit --output-file reports/lint-report.xml",
+    "build": "webpack --config=webpack.prod.js"
   },
   "repository": {
     "type": "git",
@@ -17,10 +19,49 @@
     "@google-cloud/vertexai": "^1.2.0",
     "@google/generative-ai": "^0.12.0",
     "@green-api/whatsapp-bot": "^0.2.5",
+    "assert": "^2.1.0",
     "axios": "^1.7.2",
-    "dotenv": "^16.4.5",
+    "crypto-browserify": "^3.12.0",
     "firebase": "^10.12.2",
     "google-auth-library": "^9.11.0",
-    "node-fetch": "^3.3.2"
+    "node-browser-modules": "^0.2.1",
+    "node-fetch": "^3.3.2",
+    "vm-browserify": "^1.1.2"
+  },
+  "jest": {
+    "reporters": [
+      "default",
+      [
+        "jest-junit",
+        {
+          "outputDirectory": "test-results/junit",
+          "outputName": "results.xml"
+        }
+      ]
+    ]
+  },
+  "devDependencies": {
+    "@eslint/compat": "^1.1.0",
+    "@eslint/js": "^9.6.0",
+    "@typescript-eslint/eslint-plugin": "^7.15.0",
+    "@typescript-eslint/parser": "^7.15.0",
+    "buffer": "^6.0.3",
+    "dotenv": "^16.4.5",
+    "eslint": "^8.57.0",
+    "eslint-plugin-jest": "^28.6.0",
+    "eslint-plugin-react": "^7.34.3",
+    "globals": "^15.8.0",
+    "https-browserify": "^1.0.0",
+    "jest": "^29.7.0",
+    "os-browserify": "^0.3.0",
+    "path-browserify": "^1.0.1",
+    "querystring-es3": "^0.2.1",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "url": "^0.11.3",
+    "util": "^0.12.5",
+    "webpack": "^5.92.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-merge": "^6.0.1"
   }
 }

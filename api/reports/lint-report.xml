@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\zagur\inno-whatsapp-interns\api\config\config.js">
+<testcase time="0" name="C:\Users\zagur\inno-whatsapp-interns\api\config\config.js" classname="C:\Users\zagur\inno-whatsapp-interns\api\config\config" />
+</testsuite>
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\zagur\inno-whatsapp-interns\api\config\index.js">
+<testcase time="0" name="C:\Users\zagur\inno-whatsapp-interns\api\config\index.js" classname="C:\Users\zagur\inno-whatsapp-interns\api\config\index" />
+</testsuite>
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\zagur\inno-whatsapp-interns\api\eslint.config.mjs">
+<testcase time="0" name="C:\Users\zagur\inno-whatsapp-interns\api\eslint.config.mjs" classname="C:\Users\zagur\inno-whatsapp-interns\api\eslint.config" />
+</testsuite>
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\zagur\inno-whatsapp-interns\api\modules\firebase.js">
+<testcase time="0" name="C:\Users\zagur\inno-whatsapp-interns\api\modules\firebase.js" classname="C:\Users\zagur\inno-whatsapp-interns\api\modules\firebase" />
+</testsuite>
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\zagur\inno-whatsapp-interns\api\modules\gemini.js">
+<testcase time="0" name="C:\Users\zagur\inno-whatsapp-interns\api\modules\gemini.js" classname="C:\Users\zagur\inno-whatsapp-interns\api\modules\gemini" />
+</testsuite>
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\zagur\inno-whatsapp-interns\api\modules\whatsapp.js">
+<testcase time="0" name="C:\Users\zagur\inno-whatsapp-interns\api\modules\whatsapp.js" classname="C:\Users\zagur\inno-whatsapp-interns\api\modules\whatsapp" />
+</testsuite>
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\zagur\inno-whatsapp-interns\api\unit_test_api.test.js">
+<testcase time="0" name="C:\Users\zagur\inno-whatsapp-interns\api\unit_test_api.test.js" classname="C:\Users\zagur\inno-whatsapp-interns\api\unit_test_api.test" />
+</testsuite>
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\zagur\inno-whatsapp-interns\api\webpack.prod.js">
+<testcase time="0" name="C:\Users\zagur\inno-whatsapp-interns\api\webpack.prod.js" classname="C:\Users\zagur\inno-whatsapp-interns\api\webpack.prod" />
+</testsuite>
+</testsuites>

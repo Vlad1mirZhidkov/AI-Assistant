@@ -3,14 +3,8 @@
 <testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\zagur\inno-whatsapp-interns\api\config\config.js">
 <testcase time="0" name="C:\Users\zagur\inno-whatsapp-interns\api\config\config.js" classname="C:\Users\zagur\inno-whatsapp-interns\api\config\config" />
 </testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\zagur\inno-whatsapp-interns\api\config\dist\bundle.js">
-<testcase time="0" name="C:\Users\zagur\inno-whatsapp-interns\api\config\dist\bundle.js" classname="C:\Users\zagur\inno-whatsapp-interns\api\config\dist\bundle" />
-</testsuite>
 <testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\zagur\inno-whatsapp-interns\api\config\index.js">
 <testcase time="0" name="C:\Users\zagur\inno-whatsapp-interns\api\config\index.js" classname="C:\Users\zagur\inno-whatsapp-interns\api\config\index" />
-</testsuite>
-<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\zagur\inno-whatsapp-interns\api\config\webpack.prod.js">
-<testcase time="0" name="C:\Users\zagur\inno-whatsapp-interns\api\config\webpack.prod.js" classname="C:\Users\zagur\inno-whatsapp-interns\api\config\webpack.prod" />
 </testsuite>
 <testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\zagur\inno-whatsapp-interns\api\eslint.config.mjs">
 <testcase time="0" name="C:\Users\zagur\inno-whatsapp-interns\api\eslint.config.mjs" classname="C:\Users\zagur\inno-whatsapp-interns\api\eslint.config" />
@@ -26,5 +20,8 @@
 </testsuite>
 <testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\zagur\inno-whatsapp-interns\api\unit_test_api.test.js">
 <testcase time="0" name="C:\Users\zagur\inno-whatsapp-interns\api\unit_test_api.test.js" classname="C:\Users\zagur\inno-whatsapp-interns\api\unit_test_api.test" />
+</testsuite>
+<testsuite package="org.eslint" time="0" tests="1" errors="0" name="C:\Users\zagur\inno-whatsapp-interns\api\webpack.prod.js">
+<testcase time="0" name="C:\Users\zagur\inno-whatsapp-interns\api\webpack.prod.js" classname="C:\Users\zagur\inno-whatsapp-interns\api\webpack.prod" />
 </testsuite>
 </testsuites>

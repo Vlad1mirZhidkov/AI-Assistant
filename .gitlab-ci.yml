@@ -23,6 +23,7 @@ lint:
   before_script:
   - cd api
   script:
+    - npm install
     - npm run lint
   allow_failure: true
   artifacts:

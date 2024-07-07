@@ -2,6 +2,7 @@ stages:
   - lint
   - build
   - test
+  - deploy
 
 variables:
   NODE_ENV: 'test'
@@ -14,12 +15,13 @@ cache:
     - node_modules/
 
 before_script:
-  - cd api
   - npm cache clean --force
   - npm install
 
 lint:
   stage: lint
+  before_script:
+  - cd api
   script:
     - npm run lint
   allow_failure: true
@@ -31,12 +33,14 @@ lint:
 
 build:
   stage: build
+  before_script:
+  - cd api
   script:
     - npm run build
-    - ls -l dist/
+    - ls -l reports/
   artifacts:
     paths:
-      - dist/
+      - reports/
 
 install_dependencies:
   stage: .pre
@@ -45,6 +49,8 @@ install_dependencies:
 
 test:
   stage: test
+  before_script:
+  - cd api
   script:
     - npm run test -- --coverage --watchAll=false
   artifacts:
@@ -53,3 +59,10 @@ test:
     paths:
       - coverage
   coverage: '/All files[^|]*\|[^|]*\|[^|]*\|[^|]*\|([^|]*)%/'
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploying the application..."
+  only:
+    - testing_test

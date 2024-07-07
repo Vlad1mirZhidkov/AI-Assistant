@@ -36,6 +36,7 @@ build:
   stage: build
   before_script:
   - cd api
+  - npm install
   script:
     - npm run build
     - ls -l reports/
@@ -52,6 +53,7 @@ test:
   stage: test
   before_script:
   - cd api
+  - npm install
   script:
     - npm run test -- --coverage --watchAll=false
   artifacts:

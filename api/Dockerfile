@@ -36,6 +36,8 @@ ENV REDIRECT_URIS="http://localhost"
 COPY ./google-credit.json /app/google-credit.json
 ENV GOOGLE_APPLICATION_CREDENTIALS="/app/google-credit.json"
 
-EXPOSE 3001
+# Make the shell script executable
+RUN chmod +x ./run-scripts.sh
 
-CMD ["node", "config/index.js"]
+# Run the shell script
+CMD ["./run-scripts.sh"]

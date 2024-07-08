@@ -1,14 +1,13 @@
 const WhatsAppBot = require('@green-api/whatsapp-bot');
 const { botConfig } = require('../config/config');
 const { getData, setData } = require('./firebase');
-const {rewriter} = require('./gemini');
-const {check_trigger} = require('./gemini')
+const {rewriter, check_trigger} = require('./gemini');
 
 const bot = new WhatsAppBot(botConfig);
 
 bot.on('message', async (ctx) => {
 
-    let conf = await getData(`/linkGreenAPI/test/botConfig`);
+    let conf = await getData(`botConfig`);
 
     let botConf = conf ? conf : {
         query: "" +
@@ -21,7 +20,7 @@ bot.on('message', async (ctx) => {
 
     }
 
-    await setData(`/linkGreenAPI/test/botConfig`, {
+    await setData(`/botConfig`, {
         query: botConf.query,
         greeting: botConf.greeting,
         triggers: botConf.triggers
@@ -35,7 +34,7 @@ bot.on('message', async (ctx) => {
     console.log(chatID, message);
 
     try {
-        let data = await getData(`/linkGreenAPI/test/${chatID}`);
+        let data = await getData(`/whatsapp/${chatID}`);
 
         let arr_chat = data ? data : {
 
@@ -53,27 +52,22 @@ bot.on('message', async (ctx) => {
                         text: "Ok, let's go!"
                     }]
                 },
-            ]
+            ],
+            accept: true,
         };
 
-        await setData(`/linkGreenAPI/test/${chatID}`, { messages: arr_chat.messages});
+        await setData(`/whatsapp/${chatID}`, {
+            messages: arr_chat.messages,
+            accept: arr_chat.accept,
+        });
 
-        if (arr_chat.messages[arr_chat.messages.length-1].parts === "Okay, we will contact with you soon!") {
+        if (arr_chat.accept === false) {
             return;
         }
 
         let result;
         if (arr_chat.messages.length === 2) {
-            result = await getData(`/linkGreenAPI/test/botConfig/greeting`)
-            result += `
-
-                 **FOR TESTING** 
-                 Basic configuration of the bot: 
-                { 
-                    query:${await getData(`/linkGreenAPI/test/botConfig/query`)}, 
-                    greeting:${await getData(`/linkGreenAPI/test/botConfig/greeting`)}, 
-                    triggers:${await getData(`/linkGreenAPI/test/botConfig/triggers`)},
-                }`
+            result = await getData(`/botConfig/greeting`)
         } else {
             result = await rewriter(message, arr_chat.messages);
         }
@@ -97,8 +91,7 @@ bot.on('message', async (ctx) => {
         const resultTrigger = await check_trigger(arr_chat.messages);
 
         if (resultTrigger === "true") {
-            await ctx.reply(`**DYNAMIC TRIGGERS FOR TESTING**
-            ${resultTrigger}`);
+
             arr_chat.messages.pop();
             arr_chat.messages.push({
                 role: 'model',
@@ -106,17 +99,18 @@ bot.on('message', async (ctx) => {
                     text: "Okay, we will contact with you soon!"
                 }]
             });
-            await ctx.reply("Okay, we will contact with you soon!")
+            if (arr_chat.accept === true) {
+                await ctx.reply("Okay, we will contact with you soon!")
+            }
+            arr_chat.accept = false;
         } else {
-            await ctx.reply(result + ` 
-
-            **DYNAMIC TRIGGERS FOR TESTING**
-            ${resultTrigger}`);
+            await ctx.reply(result);
 
         }
 
-        await setData(`/linkGreenAPI/test/${chatID}`, {
-            messages: arr_chat.messages
+        await setData(`/whatsapp/${chatID}`, {
+            messages: arr_chat.messages,
+            accept: arr_chat.accept,
         });
 
     } catch (error) {

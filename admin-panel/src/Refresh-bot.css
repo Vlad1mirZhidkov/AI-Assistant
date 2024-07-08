@@ -1,3 +1,13 @@
+.main-content {
+    padding: 20px;
+    background-color: #136D47;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 110px);
+    opacity: .73;
+}
+
 .form-container {
     max-width: 600px;
     width: 100%;
@@ -38,9 +48,4 @@ button {
 
 button:hover {
     background-color: #8b8a8a;
-}
-
-.connect-button {
-    background-color: #0088cc;
-    color: #fff;
 }

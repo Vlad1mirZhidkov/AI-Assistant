@@ -71,7 +71,7 @@ const check_trigger = async (chat_history) => {
 
         const check_idea_req = `
             If in the field "idea" in the JSON response: ${response.response.candidates[0].content.parts[0].text} 
-            has a meaning similar to at least one of the following words: ${await getData(`/linkGreenAPI/test/botConfig/triggers`)}
+            has a meaning similar to at least one of the following words: ${await getData(`/botConfig/triggers`)}
             Then write only one word TRUE if similar meanings, otherwise FALSE (write it not in JSON)!
             `
 

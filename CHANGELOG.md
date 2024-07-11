@@ -4,14 +4,16 @@ All notable changes to this project will be documented in this file.
 ## [unreleased]
 ### 🐛 Bug Fixes
 - Fix errors in unit_test_api
-([object])
+(v.zhidkov@innopolis.university)
 - Fix bug with dynamic triggers
+(dimasye7@mail.ru)
 - Fix minimal issue
 - Fix docker-compose.yml
 - Fix request for AI
 ### 🔄 Updates
 - Update .sh file
 - Update build
+(e.zagurskih@innopolis.university)
 - Update lint test
 - Update build part
 ### ➕ Additions
@@ -30,6 +32,7 @@ update code in dockerfile
 - Add reaction to dynamic triggers
 - Add json response from the bot for checking triggers and add dynamic triggers
 ### 📚 Documentation
+- Docs(changelog): update remove_duplicates function
 - Docs(changelog): delete duplicates and modify commits representation
 - Docs(changelog): delete filtration for commits
 - Docs(changelog): update installation files

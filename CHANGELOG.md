@@ -24,6 +24,9 @@ All notable changes to this project will be documented in this file.
 
 ### 🔄 Updates
 
+- update code in dockerfile 
+(dimasye7@mail.ru)
+
 - Update .sh file
 (dimasye7@mail.ru)
 
@@ -37,9 +40,12 @@ All notable changes to this project will be documented in this file.
 ### ➕ Additions
 
 - Add several pages in frontend (for refresh bot for numbers)
-add page for connect the bot to telegram
-add server.js with endpoints
-update code in dockerfile
+(dimasye7@mail.ru)
+
+- add page for connect the bot to telegram
+(dimasye7@mail.ru)
+
+- add server.js with endpoints
 (dimasye7@mail.ru)
 
 - Add node_modules
@@ -49,8 +55,6 @@ update code in dockerfile
 (e.zagurskih@innopolis.university)
 
 - Add lint test
-(e.zagurskih@innopolis.university)
-
 (e.zagurskih@innopolis.university)
 
 - Add eslintrc.js

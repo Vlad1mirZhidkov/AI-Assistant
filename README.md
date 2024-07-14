@@ -16,8 +16,8 @@ This project is designed to assist sales representatives in efficiently managing
 
 1. **Automated responses**: The bot can provide instant replies to common customer inquiries, ensuring prompt communication.
 2. **Customer Query Tracking**: All customer interactions are logged and tracked, making it easy to follow up on leads and maintain a history of conversations.
-3. **Triggers**: The bot can be configured with custom triggers to automate specific actions based on keywords or phrases in customer messages. These actions include sending a message to a Telegram channel for sellers with information about the encountered trigger and the customer.
-4. **Product Data Integration**: Bot responses are tailored based on the product data provided by the seller, ensuring accurate and relevant information is shared with customers.
+3. **Triggers**: The bot can be configured with custom triggers to automate specific actions based on keywords or phrases in customer messages. These actions include sending a message to a Telegram channel for sellers with information about the encountered trigger and the customer (in progress).
+4. **Product Data Integration**: Bot responses are tailored based on the product data provided by the seller, ensuring accurate and relevant information is shared with customers (in progress).
 5. **Bot Customization**: The bot's behavior, greeting message, and triggers can be customized to meet the specific needs of different sales teams and products.
 
 ## Demo
@@ -46,7 +46,19 @@ Ensure you have access to the following resources before starting:
 
 ### 2. Install Dependencies
 
-To install the required dependencies, run:
+1. Make sure you have the following installed:
+
+- Node.js
+- npm (Node Package Manager)
+- Docker
+
+2. Clone the repository:
+
+```bash
+git clone https://gitlab.pg.innopolis.university/d.ryazanov/inno-whatsapp-interns.git
+```
+
+3. To install the required dependencies, run:
 
 ```bash
 npm install
@@ -92,6 +104,64 @@ GOOGLE_APPLICATION_CREDENTIALS="/path/to/your/google-credit.json"
 ```
 
 Replace YOUR_* with your actual API keys and IDs. If any variables are missing, add them to your .env file.
+
+### 4. Obtaining API Keys
+
+1. **Firebase**
+
+1. Go to the Firebase Console.
+2. Create a new project or select an existing project.
+3. Navigate to Project Settings and locate your Firebase configuration.
+4. Copy the necessary keys and add them to your .env file.
+
+2. **Gemini API**
+
+1. Sign up for the Gemini API service.
+2. Generate your API key and model identifier.
+3. Add these values to your .env file under API_KEY_GEMINI and GEMINI_MODEL.
+
+3. **Google Cloud**
+
+1. Go to the Google Cloud Console.
+2. Create a new project or select an existing project.
+3. Navigate to APIs & Services > Credentials.
+4. Create a new OAuth 2.0 Client ID and download the JSON file.
+5. Add the values from the JSON file to your .env file under the respective fields.
+
+4. **Bot Configuration**
+
+- Create a WhatsApp Bot:
+
+    1. Log in to your GreenAPI account.
+    2. Navigate to the section for creating new projects or bots.
+    3. Create a new project and select the WhatsApp bot option.
+
+- Obtain BOT_INSTANCE_ID and BOT_API_TOKEN_INSTANCE:
+
+    1. After creating the project, you will be provided with a unique instance ID and API token.
+    2. You can find these details in the settings section of your project or on the dashboard.
+
+### 5. Running the application
+
+1. Start the development server:
+
+```bash
+npm start
+```
+
+2. Build for production:
+
+```bash
+npm run build
+```
+
+3. Run with Docker:
+
+```bash
+docker-compose up --build
+```
+
+The admin panel is accessible at: http://localhost:3000
 
 ## How to Use
 

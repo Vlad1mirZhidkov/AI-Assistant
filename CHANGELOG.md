@@ -24,13 +24,13 @@ All notable changes to this project will be documented in this file.
 
 ### 🔄 Updates
 
-- update code in dockerfile 
+- - Update code in dockerfile
 (dimasye7@mail.ru)
 
 - Update .sh file
 (dimasye7@mail.ru)
 
-- Update build part
+- Update build
 (e.zagurskih@innopolis.university)
 
 - Update lint test
@@ -42,10 +42,10 @@ All notable changes to this project will be documented in this file.
 - Add several pages in frontend (for refresh bot for numbers)
 (dimasye7@mail.ru)
 
-- add page for connect the bot to telegram
+- Add page for connect the bot to telegram
 (dimasye7@mail.ru)
 
-- add server.js with endpoints
+- Add server.js with endpoints
 (dimasye7@mail.ru)
 
 - Add node_modules
@@ -74,6 +74,15 @@ All notable changes to this project will be documented in this file.
 
 
 ### 📚 Documentation
+
+- Docs(README.md): update documentation
+(e.zagurskih@innopolis.university)
+
+- Docs(README.md): update documentation
+(e.zagurskih@innopolis.university)
+
+- Docs(changelog): update remove_duplicate
+(e.zagurskih@innopolis.university)
 
 - Docs(changelog): update commits representation
 (e.zagurskih@innopolis.university)
@@ -112,9 +121,6 @@ All notable changes to this project will be documented in this file.
 
 - Add fields "buy" and "call_real_human" into DB, these fields accepted boolean values (true/false)
 (dimasye7@mail.ru)
-
-- Add triggers
-(v.zhidkov@innopolis.university)
 
 - Add triggers
 (v.zhidkov@innopolis.university)

@@ -24,7 +24,7 @@ All notable changes to this project will be documented in this file.
 
 ### 🔄 Updates
 
-- - Update code in dockerfile
+- Update code in dockerfile
 (dimasye7@mail.ru)
 
 - Update .sh file

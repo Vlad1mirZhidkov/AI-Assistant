@@ -107,20 +107,20 @@ Replace YOUR_* with your actual API keys and IDs. If any variables are missing, 
 
 ### 4. Obtaining API Keys
 
-1. **Firebase**
+**Firebase**
 
 1. Go to the Firebase Console.
 2. Create a new project or select an existing project.
 3. Navigate to Project Settings and locate your Firebase configuration.
 4. Copy the necessary keys and add them to your .env file.
 
-2. **Gemini API**
+**Gemini API**
 
 1. Sign up for the Gemini API service.
 2. Generate your API key and model identifier.
 3. Add these values to your .env file under API_KEY_GEMINI and GEMINI_MODEL.
 
-3. **Google Cloud**
+**Google Cloud**
 
 1. Go to the Google Cloud Console.
 2. Create a new project or select an existing project.
@@ -128,7 +128,7 @@ Replace YOUR_* with your actual API keys and IDs. If any variables are missing, 
 4. Create a new OAuth 2.0 Client ID and download the JSON file.
 5. Add the values from the JSON file to your .env file under the respective fields.
 
-4. **Bot Configuration**
+**Bot Configuration**
 
 - Create a WhatsApp Bot:
 

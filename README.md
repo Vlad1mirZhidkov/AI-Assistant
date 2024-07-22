@@ -165,11 +165,22 @@ The admin panel is accessible at: http://localhost:3000
 
 ## How to Use
 
-Step-by-step instructions on how to use your AI-sales.
+The current version of the product is accessable only locally from Docker. This is the instruction to use it on you machine:
 
-1. Step one
-2. Step two
-3. Step three 
+1. Admin Panel:
+```bash
+docker pull vladimirzhidkov/rfghj:inno-whatsapp-interns-admin-panel
+```
+```bash
+docker run -d -p 3000:3000 vladimirzhidkov/rfghj:inno-whatsapp-interns-admin-panel
+```
+2. API Design:
+```bash
+docker pull vladimirzhidkov/rfghj:inno-whatsapp-interns-api
+docker run -d -p 4000:4000 vladimirzhidkov/rfghj:inno-whatsapp-interns-api
+```
+
+The admin panel is accessible at: http://localhost:3000
 
 ## Technologies Used
 

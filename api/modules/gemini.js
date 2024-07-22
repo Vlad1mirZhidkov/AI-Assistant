@@ -1,7 +1,8 @@
 const { VertexAI } = require('@google-cloud/vertexai');
 const { GoogleAuth } = require('google-auth-library');
 const {getData} = require("./firebase");
-
+const {sendMessage} = require("./tg_bot")
+const {checkSimilarity} = require("./distance")
 let authClient = null;
 
 async function initializeAuth() {
@@ -43,7 +44,7 @@ const initializeVertexAI = async () => {
 };
 
 
-const check_trigger = async (chat_history) => {
+const check_trigger = async (chat_history, number) => {
     await initializeVertexAI();
 
     try {
@@ -58,12 +59,15 @@ const check_trigger = async (chat_history) => {
         const request = `
             You must to classify last message based on context in chat history from role 'user'.
             You must to use only JSON response without other words from you!
-            In the JSON response, you must provide the idea that the buyer intends in his message.
+            In the JSON response, you must provide the idea that the buyer intends in his message and product which 
+            customer wants to buy or interested.
             You must to use sample JSON response that below:
             {
                 message: "Message from customer"
                 idea: "Idea of the message"
+                product: "product what will be bought"
             }
+            
             `;
         const response = await chat.sendMessage(request);
 
@@ -80,6 +84,26 @@ const check_trigger = async (chat_history) => {
         console.log(check_idea_response.response.candidates[0].content.parts[0].text);
 
         if (check_idea_response.response.candidates[0].content.parts[0].text.toLowerCase().includes('true')) {
+            let post_text = `
+                        number: +${number}
+                        trigger: ${String(response.response.candidates[0].content.parts[0].text).split(`"idea":`)[1].split("}")[0].trim()}
+                        `;
+
+            if (response.response.candidates[0].content.parts[0].text.toLowerCase().includes('product')) {
+                const prod = await checkSimilarity(String(response.response.candidates[0].content.parts[0].text).split(`"product":`)[1].split("}")[0].trim());
+                post_text = `
+                        number: +${number}
+                        trigger: ${String(response.response.candidates[0].content.parts[0].text).split(`"idea":`)[1].split("product")[0].trim()}
+                        name of product: ${prod.name}
+                        info about product: ${prod.info},
+                        price of product: ${prod.price}
+                  
+                        `;
+            }
+
+
+            sendMessage(post_text);
+
             return 'true';
         }
 

@@ -6,6 +6,16 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const dbRef = ref(database);
 
+const getAllProducts = async () => {
+    try {
+        const snapshot = await get(child(ref(getDatabase()), 'products'));
+        return snapshot.exists() ? snapshot.val() : null;
+    } catch (e) {
+        console.error("Error fetching data:", e);
+        throw e;
+    }
+};
+
 const getData = async (path) => {
     try {
         const snapshot = await get(child(dbRef, path));
@@ -25,8 +35,8 @@ const setData = async (path, data) => {
     }
 };
 
-
 module.exports = {
+    getAllProducts,
     getData,
     setData,
 };

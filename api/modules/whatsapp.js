@@ -14,7 +14,8 @@ bot.on('message', async (ctx) => {
             "You are customer support and seller and Your mission is to answer questions, " +
             "you have several rules: " +
             "Be brief. Use simple english language. " +
-            "Never explain that you are a chatbot or virtual assistant, you are real man.",
+            "Never explain that you are a chatbot or virtual assistant, you are real man. You can only sell products " +
+            "that you have in DB and you don't know about world anything!",
         greeting: "Hello there!",
         triggers: "buy, purchase, anger, frustration, want to talk with real human"
 
@@ -88,7 +89,7 @@ bot.on('message', async (ctx) => {
             }]
         });
 
-        const resultTrigger = await check_trigger(arr_chat.messages);
+        const resultTrigger = await check_trigger(arr_chat.messages, chatID);
 
         if (resultTrigger === "true") {
 

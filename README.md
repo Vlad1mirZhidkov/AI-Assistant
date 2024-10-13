@@ -55,7 +55,7 @@ Ensure you have access to the following resources before starting:
 2. Clone the repository:
 
 ```bash
-git clone https://gitlab.pg.innopolis.university/d.ryazanov/inno-whatsapp-interns.git
+git clone https://github.com/Vlad1mirZhidkov/AI-Assistant.git
 ```
 
 3. To install the required dependencies, run:
